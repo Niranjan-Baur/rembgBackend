@@ -8,6 +8,11 @@ from rembg import remove  # Make sure rembg is installed
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/', methods=['GET'])
+def server_running():
+    return {'status': 'Server is running ✅'}, 200
+
+
 @app.route('/remove-bg', methods=['POST'])
 def remove_bg():
     file = request.files['image']
